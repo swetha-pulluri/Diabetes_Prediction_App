@@ -31,7 +31,7 @@ This app predicts diabetes based on patient health data.
 - Provides probability-based prediction for diabetes risk
 
 ## 🌐 Live Demo
-🔗 https://diabetespredictionapp-em5lpixautm9qrnoyuw7l.streamlit.app
+🔗https://swetha-diabetes-app.streamlit.app
 
 ## 🏁 Conclusion
 This project demonstrates how Machine Learning can be used in healthcare
