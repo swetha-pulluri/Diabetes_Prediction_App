@@ -83,60 +83,7 @@ input_data = np.array([[
 
 # -----------------------------
 # Prediction button
-if st.button("🔍 Predict Diabetes Risk"):
-    prediction = model.predict(input_data)[0]
-    probability = model.predict_proba(input_data)[0][1] * 100
 
-    st.subheader("🧪 Prediction Result")
-if probability < 30:
-    st.markdown(
-        f"""
-        <div style="background-color:#d4edda;padding:15px;border-radius:10px">
-            <h3 style="color:#155724;">🟢 LOW RISK (SAFE)</h3>
-            <p><b>Diabetes Probability:</b> {probability:.2f}%</p>
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
-
-    # Progress bar
-    st.progress(min(int(probability), 100))
-
-    # Health tip
-    st.info("✅ **Health Tip:** Maintain a healthy diet, regular exercise, and routine checkups.")
-elif 30 <= probability <= 60:
-    st.markdown(
-        f"""
-        <div style="background-color:#fff3cd;padding:15px;border-radius:10px">
-            <h3 style="color:#856404;">🟡 MODERATE RISK</h3>
-            <p><b>Diabetes Probability:</b> {probability:.2f}%</p>
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
-
-    # Progress bar
-    st.progress(min(int(probability), 100))
-
-    # Health tip
-    st.warning("⚠️ **Health Tip:** Monitor glucose levels, improve lifestyle habits, and reduce sugar intake.")
-else:
-    st.markdown(
-        f"""
-        <div style="background-color:#f8d7da;padding:15px;border-radius:10px">
-            <h3 style="color:#721c24;">🔴 HIGH RISK</h3>
-            <p><b>Diabetes Probability:</b> {probability:.2f}%</p>
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
-
-    # Progress bar
-    st.progress(min(int(probability), 100))
-
-    # Health tip
-    st.error("🚨 **Health Tip:** Please consult a qualified healthcare professional as soon as possible.")    
-        
 # -----------------------------
 # Feature importance section
 # -----------------------------
@@ -153,6 +100,53 @@ feature_names = [
     "Diabetes Pedigree Function",
     "Age"
 ]
+if st.button("🔍 Predict Diabetes Risk"):
+    prediction = model.predict(input_data)[0]
+    probability = model.predict_proba(input_data)[0][1] * 100
+
+    st.subheader("🧪 Prediction Result")
+
+    if probability < 30:
+        st.markdown(
+            f"""
+            <div style="background-color:#d4edda;padding:15px;border-radius:10px">
+                <h3 style="color:#155724;">🟢 LOW RISK (SAFE)</h3>
+                <p><b>Diabetes Probability:</b> {probability:.2f}%</p>
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
+
+        st.progress(min(int(probability), 100))
+        st.info("✅ **Health Tip:** Maintain a healthy diet and regular exercise.")
+
+    elif 30 <= probability <= 60:
+        st.markdown(
+            f"""
+            <div style="background-color:#fff3cd;padding:15px;border-radius:10px">
+                <h3 style="color:#856404;">🟡 MODERATE RISK</h3>
+                <p><b>Diabetes Probability:</b> {probability:.2f}%</p>
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
+
+        st.progress(min(int(probability), 100))
+        st.warning("⚠️ **Health Tip:** Monitor glucose levels and improve lifestyle habits.")
+
+    else:
+        st.markdown(
+            f"""
+            <div style="background-color:#f8d7da;padding:15px;border-radius:10px">
+                <h3 style="color:#721c24;">🔴 HIGH RISK</h3>
+                <p><b>Diabetes Probability:</b> {probability:.2f}%</p>
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
+
+        st.progress(min(int(probability), 100))
+        st.error("🚨 **Health Tip:** Please consult a healthcare professional.")
 
 importance_df = pd.DataFrame({
     "Feature": feature_names,
@@ -170,5 +164,6 @@ st.caption(
     "should not be considered as medical advice. "
     "Please consult a qualified healthcare professional for diagnosis."
 )
+
 
 
