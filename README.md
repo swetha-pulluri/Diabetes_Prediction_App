@@ -30,8 +30,11 @@ This app predicts diabetes based on patient health data.
 - ROC-AUC Score: 0.81
 - Provides probability-based prediction for diabetes risk
 
+## 🌐 Live Demo
+🔗 https://diabetespredictionapp-em5lpixautm9qrnoyuw7l.streamlit.app
 
-## 🚀 How to Run the App
-```bash
-pip install -r requirements.txt
-streamlit run app.py
+## 🏁 Conclusion
+This project demonstrates how Machine Learning can be used in healthcare
+for early detection of diabetes and real-world ML deployment using Streamlit.
+
+
