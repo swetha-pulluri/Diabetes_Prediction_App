@@ -1,4 +1,4 @@
-# Diabetes Prediction App 🩺💻
+# Diabetes Prediction Web App 🩺💻
 
 This is a Machine Learning based web application that predicts whether a person is diabetic using medical parameters.
 
@@ -25,6 +25,11 @@ This app predicts diabetes based on patient health data.
 ## 🧠 Model Used
 - Trained ML classification model
 - Saved using Pickle (`.pkl`)
+- ## 📈 Results
+- Model Accuracy: ~72%
+- ROC-AUC Score: 0.81
+- Provides probability-based prediction for diabetes risk
+
 
 ## 🚀 How to Run the App
 ```bash
