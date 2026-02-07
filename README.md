@@ -37,4 +37,3 @@ This app predicts diabetes based on patient health data.
 This project demonstrates how Machine Learning can be used in healthcare
 for early detection of diabetes and real-world ML deployment using Streamlit.
 
-
