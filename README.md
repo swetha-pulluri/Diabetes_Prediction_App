@@ -15,6 +15,13 @@ This app predicts diabetes based on patient health data.
   - BMI
   - Insulin
   - Age
+### 🔍 Key Enhancements
+- Probability-based diabetes risk prediction
+- Color-coded risk levels (Low / Moderate / High)
+- Progress bar visualization for medical dashboard feel
+- Feature importance explainability
+- User-friendly health tips
+- Healthcare disclaimer
 
 ## ⚙️ Technologies Used
 - Python
