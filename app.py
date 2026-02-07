@@ -83,22 +83,46 @@ input_data = np.array([[
 
 # -----------------------------
 # Prediction button
-# -----------------------------
 if st.button("🔍 Predict Diabetes Risk"):
     prediction = model.predict(input_data)[0]
     probability = model.predict_proba(input_data)[0][1] * 100
 
-    if prediction == 1:
-        st.error(
-            f"🔴 **High Risk of Diabetes**\n\n"
-            f"📊 Probability: **{probability:.2f}%**"
-        )
-    else:
-        st.success(
-            f"🟢 **Low Risk of Diabetes**\n\n"
-            f"📊 Probability: **{probability:.2f}%**"
+    st.subheader("🧪 Prediction Result")
+
+    if probability < 30:
+        st.markdown(
+            f"""
+            <div style="background-color:#d4edda;padding:15px;border-radius:10px">
+                <h3 style="color:#155724;">🟢 LOW RISK (SAFE)</h3>
+                <p><b>Diabetes Probability:</b> {probability:.2f}%</p>
+            </div>
+            """,
+            unsafe_allow_html=True
         )
 
+    elif 30 <= probability <= 60:
+        st.markdown(
+            f"""
+            <div style="background-color:#fff3cd;padding:15px;border-radius:10px">
+                <h3 style="color:#856404;">🟡 MODERATE RISK</h3>
+                <p><b>Diabetes Probability:</b> {probability:.2f}%</p>
+                <p>⚠️ Lifestyle changes & regular monitoring recommended.</p>
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
+
+    else:
+        st.markdown(
+            f"""
+            <div style="background-color:#f8d7da;padding:15px;border-radius:10px">
+                <h3 style="color:#721c24;">🔴 HIGH RISK</h3>
+                <p><b>Diabetes Probability:</b> {probability:.2f}%</p>
+                <p>🚨 Please consult a healthcare professional.</p>
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
 # -----------------------------
 # Feature importance section
 # -----------------------------
@@ -132,3 +156,4 @@ st.caption(
     "should not be considered as medical advice. "
     "Please consult a qualified healthcare professional for diagnosis."
 )
+
